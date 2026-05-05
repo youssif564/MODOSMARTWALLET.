@@ -205,3 +205,6 @@ function setupLiveReviewForm() {
 
 setupLiveReviewForm();
 initLiveReviews();
+
+setupLiveReviewForm();
+initLiveReviews();
