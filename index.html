@@ -18,6 +18,7 @@
       <a href="#home" class="brand"><span class="brand-mark">M</span><span>MODO</span></a>
       <nav class="nav-links" id="navLinks">
         <a href="#products" data-i18n="navProducts">المنتجات</a>
+        <a href="#story" data-i18n="navStory">قصتنا</a>
         <a href="#how" data-i18n="navHow">طريقة الاستخدام</a>
         <a href="#reviews" data-i18n="navReviews">التقييمات</a>
         <a href="#order" data-i18n="navOrder">اطلب الآن</a>
@@ -80,6 +81,49 @@
       </div>
     </section>
 
+
+    <section class="section story-section" id="story">
+      <div class="container story-grid">
+        <div class="story-card reveal">
+          <span class="story-eyebrow" data-i18n="storyEyebrow">قصتنا في Modo</span>
+          <h2 data-i18n="storyTitle">الموضوع مبدأش كـ بيزنس… بدأ من مشكلة حقيقية.</h2>
+
+          <div class="story-text">
+            <p data-i18n="storyP1">أنا يوسف رشوان، وفي يوم ضاعت محفظتي بكل اللي فيها… كروت، فلوس، وكل حاجة مهمة.</p>
+            <p data-i18n="storyP2">وقتها حسّيت قد إيه إحنا معتمدين على حاجة بسيطة زي المحفظة… ومع ذلك مفيش أمان حقيقي.</p>
+            <p data-i18n="storyP3">من هنا بدأت الفكرة: ليه مفيش محفظة تبقى شيك، وفي نفس الوقت تحميك وتخليك مطمن؟</p>
+          </div>
+
+          <div class="story-features">
+            <div><strong>✔</strong><span data-i18n="storyF1">تصميم فخم يليق بيك</span></div>
+            <div><strong>✔</strong><span data-i18n="storyF2">جلد طبيعي بجودة عالية</span></div>
+            <div><strong>✔</strong><span data-i18n="storyF3">تكنولوجيا ذكية تساعدك تلاقيها لو ضاعت</span></div>
+          </div>
+
+          <p class="story-highlight" data-i18n="storyHighlight">Modo مش مجرد محفظة… دي راحة بال + أمان + ستايل في نفس الوقت.</p>
+
+          <p class="story-note" data-i18n="storyNote">إحنا مش شركة كبيرة مجهولة… إحنا ناس حقيقيين في مصر، وهدفنا نقدم منتج بجد يعيش معاك.</p>
+
+          <div class="founder-contact">
+            <div>
+              <small data-i18n="storyContactSmall">لو عندك أي سؤال، تقدر تكلمني أنا شخصيًا</small>
+              <a href="tel:01220597999">📞 01220597999</a>
+            </div>
+            <a href="#order" class="btn btn-primary" data-i18n="storyCTA">اطلب دلوقتي والدفع عند الاستلام</a>
+          </div>
+        </div>
+
+        <div class="story-visual reveal">
+          <img src="smart-wallet.jpg" alt="Modo Smart Wallet Story">
+          <div class="story-quote">
+            <span>“</span>
+            <p data-i18n="storyQuote">راحة بال + أمان + ستايل</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
     <section class="section products-section" id="products">
       <div class="container">
         <div class="section-head reveal">
@@ -122,26 +166,23 @@
       </div>
     </section>
 
-
     <section class="section reviews-section" id="reviews">
       <div class="container">
         <div class="section-head reveal">
           <span data-i18n="reviewsEyebrow">آراء العملاء</span>
-          <h2 data-i18n="reviewsTitle">تقييمات العملاء المباشرة</h2>
-          <p data-i18n="reviewsSubtitle">أي عميل يقدر يكتب تقييم ويرفع صورة، والتقييم يظهر مباشرة على الموقع.</p>
+          <h2 data-i18n="reviewsTitle">عملاء وثقوا في Modo</h2>
+          <p data-i18n="reviewsSubtitle">تقييمات حقيقية الشكل يمكنك تعديلها لاحقاً بتقييمات عملائك الفعلية.</p>
         </div>
-
         <div class="reviews-layout">
           <form class="live-review-form reveal" id="reviewForm">
-            <h3 data-i18n="writeReviewTitle">اكتب تقييمك</h3>
-
-            <label for="reviewName" data-i18n="reviewNameLabel">الاسم</label>
+            <h3>اكتب تقييمك</h3>
+            <label for="reviewName">الاسم</label>
             <input id="reviewName" type="text" required maxlength="40" placeholder="مثال: أحمد">
 
-            <label for="reviewCity" data-i18n="reviewCityLabel">المدينة</label>
+            <label for="reviewCity">المدينة</label>
             <input id="reviewCity" type="text" required maxlength="40" placeholder="مثال: القاهرة">
 
-            <label for="reviewRating" data-i18n="reviewRatingLabel">التقييم</label>
+            <label for="reviewRating">التقييم</label>
             <select id="reviewRating" required>
               <option value="5">★★★★★ 5</option>
               <option value="4">★★★★☆ 4</option>
@@ -150,19 +191,19 @@
               <option value="1">★☆☆☆☆ 1</option>
             </select>
 
-            <label for="reviewText" data-i18n="reviewTextLabel">رأيك في المنتج</label>
+            <label for="reviewText">رأيك في المنتج</label>
             <textarea id="reviewText" required maxlength="280" placeholder="اكتب تقييمك هنا..."></textarea>
 
-            <label for="reviewImage" data-i18n="reviewImageLabel">صورة اختيارية للمنتج</label>
+            <label for="reviewImage">صورة اختيارية للمنتج</label>
             <input id="reviewImage" type="file" accept="image/*">
 
-            <button class="btn btn-primary" type="submit" id="reviewSubmitBtn" data-i18n="submitReview">نشر التقييم مباشرة</button>
-            <p class="form-note" id="reviewStatus" data-i18n="reviewStatusReady">التقييم سيظهر مباشرة بعد النشر.</p>
+            <button class="btn btn-primary" type="submit" id="reviewSubmitBtn">نشر التقييم مباشرة</button>
+            <p class="form-note" id="reviewStatus">التقييم سيظهر مباشرة بعد النشر.</p>
           </form>
 
           <div class="reviews-live">
             <div class="reviews-toolbar reveal">
-              <h3 data-i18n="latestReviews">أحدث التقييمات</h3>
+              <h3>أحدث التقييمات</h3>
               <span id="reviewModeBadge">Live</span>
             </div>
             <div class="reviews-grid" id="reviewsGrid"></div>
@@ -170,7 +211,6 @@
         </div>
       </div>
     </section>
-
 
     <section class="section order-section" id="order">
       <div class="container order-grid">
@@ -230,6 +270,6 @@
 
   <a href="https://wa.me/201220597999" class="whatsapp-float" target="_blank">☎</a>
   <a href="#order" class="sticky-mobile-cta" data-i18n="stickyCTA">اطلب الآن والدفع عند الاستلام</a>
-  <script type="module" src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
