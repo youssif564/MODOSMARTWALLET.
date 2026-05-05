@@ -225,29 +225,6 @@
   filter: contrast(1.05);
 }
 
-.story-quote {
-  position: absolute;
-  inset-inline: 30px;
-  bottom: 30px;
-  background: rgba(0,0,0,0.72);
-  border: 1px solid rgba(201,164,76,0.45);
-  backdrop-filter: blur(12px);
-  border-radius: 20px;
-  padding: 16px;
-}
-
-.story-quote span {
-  color: var(--gold2);
-  font-size: 2rem;
-  line-height: 1;
-}
-
-.story-quote p {
-  color: #fff;
-  font-weight: 900;
-  font-size: 1.1rem;
-}
-
 @media (max-width: 980px) {
   .story-grid {
     grid-template-columns: 1fr;
@@ -267,3 +244,4 @@
     aspect-ratio: 1 / 1;
   }
 }
+
