@@ -14,8 +14,8 @@ const firebaseConfigLiveReviews = {
   measurementId: "G-H402HQ36YF"
 };
 
-const CLOUDINARY_CLOUD_NAME = "PUT_YOUR_CLOUDINARY_CLOUD_NAME_HERE";
-const CLOUDINARY_UPLOAD_PRESET = "PUT_YOUR_CLOUDINARY_UNSIGNED_UPLOAD_PRESET_HERE";
+const CLOUDINARY_CLOUD_NAME = "di3fqqtn1";
+const CLOUDINARY_UPLOAD_PRESET = "modosmartwallets";
 
 let liveReviewsDb = null;
 let liveReviewsEnabled = false;
