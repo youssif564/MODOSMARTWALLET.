@@ -244,4 +244,9 @@
     aspect-ratio: 1 / 1;
   }
 }
+.whatsapp-float svg {
+  width: 30px;
+  height: 30px;
+  fill: #fff;
+}
 
