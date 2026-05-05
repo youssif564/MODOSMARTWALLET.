@@ -122,20 +122,55 @@
       </div>
     </section>
 
+
     <section class="section reviews-section" id="reviews">
       <div class="container">
         <div class="section-head reveal">
           <span data-i18n="reviewsEyebrow">آراء العملاء</span>
-          <h2 data-i18n="reviewsTitle">عملاء وثقوا في Modo</h2>
-          <p data-i18n="reviewsSubtitle">تقييمات حقيقية الشكل يمكنك تعديلها لاحقاً بتقييمات عملائك الفعلية.</p>
+          <h2 data-i18n="reviewsTitle">تقييمات العملاء المباشرة</h2>
+          <p data-i18n="reviewsSubtitle">أي عميل يقدر يكتب تقييم ويرفع صورة، والتقييم يظهر مباشرة على الموقع.</p>
         </div>
-        <div class="reviews-grid">
-          <article class="review-card reveal"><div class="stars">★★★★★</div><p data-i18n="review1">الخامة شيك جداً والمحفظة حجمها مناسب. وصلت بسرعة والدفع كان عند الاستلام.</p><strong data-i18n="reviewer1">أحمد من القاهرة</strong></article>
-          <article class="review-card reveal"><div class="stars">★★★★★</div><p data-i18n="review2">ميزة التنبيه ممتازة. أكتر حاجة عجبتني إن شكلها مش تقني زيادة، شكلها فخم.</p><strong data-i18n="reviewer2">عمر من الجيزة</strong></article>
-          <article class="review-card reveal"><div class="stars">★★★★★</div><p data-i18n="review3">اشتريتها هدية وكانت ممتازة. التغليف والجلد شكلهم راقي.</p><strong data-i18n="reviewer3">كريم من الإسكندرية</strong></article>
+
+        <div class="reviews-layout">
+          <form class="live-review-form reveal" id="reviewForm">
+            <h3 data-i18n="writeReviewTitle">اكتب تقييمك</h3>
+
+            <label for="reviewName" data-i18n="reviewNameLabel">الاسم</label>
+            <input id="reviewName" type="text" required maxlength="40" placeholder="مثال: أحمد">
+
+            <label for="reviewCity" data-i18n="reviewCityLabel">المدينة</label>
+            <input id="reviewCity" type="text" required maxlength="40" placeholder="مثال: القاهرة">
+
+            <label for="reviewRating" data-i18n="reviewRatingLabel">التقييم</label>
+            <select id="reviewRating" required>
+              <option value="5">★★★★★ 5</option>
+              <option value="4">★★★★☆ 4</option>
+              <option value="3">★★★☆☆ 3</option>
+              <option value="2">★★☆☆☆ 2</option>
+              <option value="1">★☆☆☆☆ 1</option>
+            </select>
+
+            <label for="reviewText" data-i18n="reviewTextLabel">رأيك في المنتج</label>
+            <textarea id="reviewText" required maxlength="280" placeholder="اكتب تقييمك هنا..."></textarea>
+
+            <label for="reviewImage" data-i18n="reviewImageLabel">صورة اختيارية للمنتج</label>
+            <input id="reviewImage" type="file" accept="image/*">
+
+            <button class="btn btn-primary" type="submit" id="reviewSubmitBtn" data-i18n="submitReview">نشر التقييم مباشرة</button>
+            <p class="form-note" id="reviewStatus" data-i18n="reviewStatusReady">التقييم سيظهر مباشرة بعد النشر.</p>
+          </form>
+
+          <div class="reviews-live">
+            <div class="reviews-toolbar reveal">
+              <h3 data-i18n="latestReviews">أحدث التقييمات</h3>
+              <span id="reviewModeBadge">Live</span>
+            </div>
+            <div class="reviews-grid" id="reviewsGrid"></div>
+          </div>
         </div>
       </div>
     </section>
+
 
     <section class="section order-section" id="order">
       <div class="container order-grid">
@@ -195,6 +230,6 @@
 
   <a href="https://wa.me/201220597999" class="whatsapp-float" target="_blank">☎</a>
   <a href="#order" class="sticky-mobile-cta" data-i18n="stickyCTA">اطلب الآن والدفع عند الاستلام</a>
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
