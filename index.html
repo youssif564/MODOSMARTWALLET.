@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Modo Smart Wallets - محافظ جلد طبيعي بتقنية تتبع ذكية. اطلب الآن والدفع عند الاستلام داخل مصر." />
+  <title>Modo Smart Wallets | محفظتك مش هتضيع تاني</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="top-strip"><span data-i18n="topOffer">عرض لفترة محدودة — شحن سريع والدفع عند الاستلام داخل مصر</span></div>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#home" class="brand"><span class="brand-mark">M</span><span>MODO</span></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#products" data-i18n="navProducts">المنتجات</a>
+        <a href="#how" data-i18n="navHow">طريقة الاستخدام</a>
+        <a href="#reviews" data-i18n="navReviews">التقييمات</a>
+        <a href="#order" data-i18n="navOrder">اطلب الآن</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="lang-btn" id="langToggle" type="button">English</button>
+        <a href="#order" class="mini-cta" data-i18n="navCTA">اطلب الآن</a>
+        <button class="menu-btn" id="menuBtn" type="button">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-content reveal">
+          <div class="hero-badge"><span>🔥</span><span data-i18n="heroUrgency">عرض لفترة محدودة</span></div>
+          <h1 data-i18n="heroTitle">محفظتك مش هتضيع تاني</h1>
+          <p class="hero-subtitle" data-i18n="heroSubtitle">محفظة جلد طبيعي بتتبع ذكي، تنبيه عند الابتعاد، وصوت إنذار يساعدك تلاقيها بسهولة.</p>
+          <div class="hero-actions">
+            <a href="#order" class="btn btn-primary" data-i18n="heroCTA">اطلب الآن والدفع عند الاستلام</a>
+            <a href="#products" class="btn btn-secondary" data-i18n="heroExplore">شوف المنتجات</a>
+          </div>
+          <div class="trust-badges">
+            <span>✅ <b data-i18n="badgeCOD">الدفع عند الاستلام</b></span>
+            <span>🚚 <b data-i18n="badgeFast">شحن سريع</b></span>
+            <span>⭐ <b data-i18n="badgeCustomers">+100 عميل في مصر</b></span>
+          </div>
+          <div class="countdown-card">
+            <span data-i18n="countdownTitle">العرض ينتهي خلال</span>
+            <div class="countdown" id="countdown">
+              <div><strong id="hours">00</strong><small data-i18n="hours">ساعة</small></div>
+              <div><strong id="minutes">00</strong><small data-i18n="minutes">دقيقة</small></div>
+              <div><strong id="seconds">00</strong><small data-i18n="seconds">ثانية</small></div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual reveal">
+          <div class="gallery-card">
+            <div class="main-image-wrap">
+              <img src="smart-wallet.jpg" alt="Modo Smart Wallet" id="mainGalleryImage" />
+              <span class="discount-pill" data-i18n="discountPill">وفر 249 جنيه</span>
+            </div>
+            <div class="thumb-row" id="heroThumbs">
+              <button class="thumb active" data-img="smart-wallet.jpg"><img src="smart-wallet.jpg" alt=""></button>
+              <button class="thumb" data-img="classic-wallet.jpg"><img src="classic-wallet.jpg" alt=""></button>
+              <button class="thumb" data-img="premium-wallet.jpg"><img src="premium-wallet.jpg" alt=""></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="social-proof reveal">
+      <div class="container proof-grid">
+        <div><strong>4.9/5</strong><span data-i18n="proofRating">تقييم العملاء</span></div>
+        <div><strong>+100</strong><span data-i18n="proofCustomers">عميل في مصر</span></div>
+        <div><strong>COD</strong><span data-i18n="proofCOD">الدفع عند الاستلام</span></div>
+        <div><strong>24–72h</strong><span data-i18n="proofDelivery">توصيل سريع</span></div>
+      </div>
+    </section>
+
+    <section class="section products-section" id="products">
+      <div class="container">
+        <div class="section-head reveal">
+          <span data-i18n="productsEyebrow">اختار محفظتك</span>
+          <h2 data-i18n="productsTitle">منتجات Modo</h2>
+          <p data-i18n="productsSubtitle">تصميم فاخر، جلد طبيعي، وتجربة طلب بسيطة وسريعة.</p>
+        </div>
+        <div class="products-grid" id="productsGrid"></div>
+      </div>
+    </section>
+
+    <section class="section how-section" id="how">
+      <div class="container">
+        <div class="section-head reveal">
+          <span data-i18n="howEyebrow">للمحفظة الذكية</span>
+          <h2 data-i18n="howTitle">بتشتغل إزاي؟</h2>
+          <p data-i18n="howSubtitle">ثلاث خطوات بسيطة تساعدك تحافظ على محفظتك.</p>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card reveal"><div class="step-icon">📲</div><h3 data-i18n="step1Title">حمّل التطبيق</h3><p data-i18n="step1Text">استخدم تطبيق iSearching على iOS أو Android.</p></div>
+          <div class="step-card reveal"><div class="step-icon">🔵</div><h3 data-i18n="step2Title">وصّل بالبلوتوث</h3><p data-i18n="step2Text">اربط المحفظة بالموبايل بسهولة خلال ثواني.</p></div>
+          <div class="step-card reveal"><div class="step-icon">🔔</div><h3 data-i18n="step3Title">استقبل التنبيهات</h3><p data-i18n="step3Text">تنبيه عند الابتعاد وصوت إنذار للعثور عليها.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section trust-section" id="trust">
+      <div class="container trust-grid">
+        <div class="trust-copy reveal">
+          <span data-i18n="trustEyebrow">ليه تختار Modo؟</span>
+          <h2 data-i18n="trustTitle">شراء آمن وتجربة مريحة</h2>
+          <p data-i18n="trustText">كل التفاصيل مصممة لتخلي قرار الشراء أسهل: دفع عند الاستلام، دعم واتساب، وسياسة استبدال واضحة.</p>
+        </div>
+        <div class="trust-cards">
+          <div class="trust-card reveal"><strong>🛡️</strong><h3 data-i18n="trust1Title">ضمان جودة</h3><p data-i18n="trust1Text">فحص المنتج قبل الشحن وتغليف مناسب.</p></div>
+          <div class="trust-card reveal"><strong>↩️</strong><h3 data-i18n="trust2Title">استبدال خلال 7 أيام</h3><p data-i18n="trust2Text">في حالة وجود عيب تصنيع.</p></div>
+          <div class="trust-card reveal"><strong>💵</strong><h3 data-i18n="trust3Title">الدفع عند الاستلام</h3><p data-i18n="trust3Text">ادفع لما تستلم المنتج.</p></div>
+          <div class="trust-card reveal"><strong>📞</strong><h3 data-i18n="trust4Title">دعم واتساب</h3><p data-i18n="trust4Text">تواصل سريع قبل وبعد الطلب.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reviews-section" id="reviews">
+      <div class="container">
+        <div class="section-head reveal">
+          <span data-i18n="reviewsEyebrow">آراء العملاء</span>
+          <h2 data-i18n="reviewsTitle">عملاء وثقوا في Modo</h2>
+          <p data-i18n="reviewsSubtitle">تقييمات حقيقية الشكل يمكنك تعديلها لاحقاً بتقييمات عملائك الفعلية.</p>
+        </div>
+        <div class="reviews-grid">
+          <article class="review-card reveal"><div class="stars">★★★★★</div><p data-i18n="review1">الخامة شيك جداً والمحفظة حجمها مناسب. وصلت بسرعة والدفع كان عند الاستلام.</p><strong data-i18n="reviewer1">أحمد من القاهرة</strong></article>
+          <article class="review-card reveal"><div class="stars">★★★★★</div><p data-i18n="review2">ميزة التنبيه ممتازة. أكتر حاجة عجبتني إن شكلها مش تقني زيادة، شكلها فخم.</p><strong data-i18n="reviewer2">عمر من الجيزة</strong></article>
+          <article class="review-card reveal"><div class="stars">★★★★★</div><p data-i18n="review3">اشتريتها هدية وكانت ممتازة. التغليف والجلد شكلهم راقي.</p><strong data-i18n="reviewer3">كريم من الإسكندرية</strong></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section order-section" id="order">
+      <div class="container order-grid">
+        <div class="order-summary reveal">
+          <span data-i18n="orderEyebrow">اطلب الآن</span>
+          <h2 data-i18n="orderTitle">املأ بياناتك وسيتم إرسال الطلب على واتساب</h2>
+          <p data-i18n="orderSubtitle">سنراجع الطلب معك على واتساب. الدفع عند الاستلام متاح.</p>
+          <div class="selected-product-card" id="selectedProductCard">
+            <img src="smart-wallet.jpg" alt="" id="selectedProductImg">
+            <div>
+              <h3 id="selectedProductName">Modo Smart Wallet</h3>
+              <p><span class="old-price" id="selectedOldPrice">799 EGP</span> <strong id="selectedPrice">550 EGP</strong></p>
+            </div>
+          </div>
+          <div class="payment-box">
+            <h3 data-i18n="paymentTitle">طرق الدفع</h3>
+            <div class="payment-methods">
+              <span>💵 <b data-i18n="paymentCOD">الدفع عند الاستلام</b></span>
+              <span>📱 Vodafone Cash</span>
+              <span>⚡ InstaPay</span>
+            </div>
+          </div>
+        </div>
+
+        <form class="order-form reveal" id="orderForm">
+          <label for="productSelect" data-i18n="formProduct">اختار المنتج</label>
+          <select id="productSelect" required></select>
+          <label for="customerName" data-i18n="formName">الاسم</label>
+          <input type="text" id="customerName" required placeholder="اكتب اسمك بالكامل">
+          <label for="customerPhone" data-i18n="formPhone">رقم الموبايل</label>
+          <input type="tel" id="customerPhone" required placeholder="01XXXXXXXXX">
+          <label for="customerAddress" data-i18n="formAddress">العنوان بالتفصيل</label>
+          <textarea id="customerAddress" required placeholder="المحافظة، المنطقة، الشارع، رقم العمارة"></textarea>
+          <label for="paymentMethod" data-i18n="formPayment">طريقة الدفع</label>
+          <select id="paymentMethod" required>
+            <option value="Cash on Delivery" data-i18n="paymentCOD">الدفع عند الاستلام</option>
+            <option value="Vodafone Cash">Vodafone Cash</option>
+            <option value="InstaPay">InstaPay</option>
+          </select>
+          <label for="customerNotes" data-i18n="formNotes">ملاحظات اختيارية</label>
+          <textarea id="customerNotes" placeholder="أي ملاحظات للتوصيل؟"></textarea>
+          <button type="submit" class="btn btn-primary order-submit" data-i18n="submitOrder">إرسال الطلب على واتساب</button>
+          <p class="form-note">🔒 <span data-i18n="formNote">بياناتك تستخدم لتأكيد الطلب فقط.</span></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div><h3>MODO</h3><p data-i18n="footerAbout">محافظ جلد طبيعي بتصميم فاخر ومميزات ذكية.</p></div>
+      <div><h4 data-i18n="footerContact">التواصل</h4><a href="tel:01220597999">01220597999</a><a href="https://wa.me/201220597999" target="_blank">WhatsApp</a></div>
+      <div><h4 data-i18n="footerSocial">تابعنا</h4><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">TikTok</a></div>
+    </div>
+    <div class="copyright"><span data-i18n="copyright">© 2026 Modo Smart Wallets. جميع الحقوق محفوظة.</span></div>
+  </footer>
+
+  <a href="https://wa.me/201220597999" class="whatsapp-float" target="_blank">☎</a>
+  <a href="#order" class="sticky-mobile-cta" data-i18n="stickyCTA">اطلب الآن والدفع عند الاستلام</a>
+  <script src="script.js"></script>
+</body>
+</html>
