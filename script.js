@@ -206,7 +206,7 @@ function setupLiveReviewForm() {
 setupLiveReviewForm();
 initLiveReviews();
 
-
+// Safe global function for product buttons when using type="module"
 window.chooseProduct = function chooseProduct(id) {
   selectedProductId = id;
   renderProductOptions();
@@ -214,7 +214,6 @@ window.chooseProduct = function chooseProduct(id) {
 
   const orderSection = document.getElementById("order");
   if (orderSection) {
-    orderSection.scrollIntoView({ behavior: "smooth" });
+    orderSection.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 };
-
