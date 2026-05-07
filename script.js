@@ -217,4 +217,3 @@ window.chooseProduct = function chooseProduct(id) {
     orderSection.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 };
-
