@@ -251,8 +251,3 @@
   height: 30px;
   fill: #fff;
 }
-
-
-.choose-btn:hover {
-  filter: brightness(1.06);
-}
