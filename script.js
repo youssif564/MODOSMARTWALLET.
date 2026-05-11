@@ -36,34 +36,48 @@ const WHATSAPP_NUMBER="201220597999";const DELIVERY_FEE=100;let currentLang="ar"
   renderProducts();
   renderProductOptions();
   updateSelectedProduct();
-}function renderProducts(){const grid=document.getElementById("productsGrid");if(!grid)return;grid.innerHTML="";products.forEach(p=>{const d=p[currentLang];const card=document.createElement("article");card.className=`product-card reveal ${p.featured?"featured":""}`;card.innerHTML=`<span class="product-tag">${d.tag}</span><img src="${p.image}" alt="${d.name}"><h3>${d.name}</h3><p>${d.desc}</p><ul class="product-features">${d.features.map(f=>`<li>${f}</li>`).join("")}</ul><div class="price-row"><span class="old-price">${money(p.oldPrice)}</span><span class="new-price">${money(p.price)}</span></div><div class="product-actions"><button class="btn btn-primary choose-btn" type="button" onclick="chooseProduct('${p.id}')">${t("chooseProduct")}</button></div>`;grid.appendChild(card)});setupReveal()}function renderProductOptions(){const s=document.getElementById("productSelect");if(!s)return;s.innerHTML=products.map(p=>`<option value="${p.id}">${p[currentLang].name} — ${money(p.price)}</option>`).join("");s.value=selectedProductId}function chooseProduct(id){selectedProductId=id;renderProductOptions();updateSelectedProduct();document.getElementById("order").scrollIntoView({behavior:"smooth"})}function updateSelectedProduct(){const p=products.find(i=>i.id===selectedProductId);const img=document.getElementById("selectedProductImg");const name=document.getElementById("selectedProductName");const oldP=document.getElementById("selectedOldPrice");const price=document.getElementById("selectedPrice");if(!p||!img||!name||!oldP||!price)return;img.src=p.image;name.textContent=p[currentLang].name;oldP.textContent=money(p.oldPrice);price.textContent=money(p.price)}function setupGallery(){const main=document.getElementById("mainGalleryImage");if(!main)return;document.querySelectorAll(".thumb").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".thumb").forEach(x=>x.classList.remove("active"));b.classList.add("active");main.src=b.dataset.img}))}function setupCountdown(){
-  const key = "modoOfferEndTimeV2";
-  const duration = 24 * 60 * 60 * 1000;
-  let end = Number(localStorage.getItem(key));
+}function renderProducts(){const grid=document.getElementById("productsGrid");if(!grid)return;grid.innerHTML="";products.forEach(p=>{const d=p[currentLang];const card=document.createElement("article");card.className=`product-card reveal ${p.featured?"featured":""}`;card.innerHTML=`<span class="product-tag">${d.tag}</span><img src="${p.image}" alt="${d.name}"><h3>${d.name}</h3><p>${d.desc}</p><ul class="product-features">${d.features.map(f=>`<li>${f}</li>`).join("")}</ul><div class="price-row"><span class="old-price">${money(p.oldPrice)}</span><span class="new-price">${money(p.price)}</span></div><div class="product-actions"><button class="btn btn-primary choose-btn" type="button" onclick="chooseProduct('${p.id}')">${t("chooseProduct")}</button></div>`;grid.appendChild(card)});setupReveal()}function renderProductOptions(){const s=document.getElementById("productSelect");if(!s)return;s.innerHTML=products.map(p=>`<option value="${p.id}">${p[currentLang].name} — ${money(p.price)}</option>`).join("");s.value=selectedProductId}function chooseProduct(id){selectedProductId=id;renderProductOptions();updateSelectedProduct();document.getElementById("order").scrollIntoView({behavior:"smooth"})}function updateSelectedProduct(){const p=products.find(i=>i.id===selectedProductId);const img=document.getElementById("selectedProductImg");const name=document.getElementById("selectedProductName");const oldP=document.getElementById("selectedOldPrice");const price=document.getElementById("selectedPrice");if(!p||!img||!name||!oldP||!price)return;img.src=p.image;name.textContent=p[currentLang].name;oldP.textContent=money(p.oldPrice);price.textContent=money(p.price)}function setupGallery(){const main=document.getElementById("mainGalleryImage");if(!main)return;document.querySelectorAll(".thumb").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".thumb").forEach(x=>x.classList.remove("active"));b.classList.add("active");main.src=b.dataset.img}))}function setupCountdown() {
+  const STORAGE_KEY = "modoOfferEndTimeFinal";
+  const OFFER_DURATION = 24 * 60 * 60 * 1000; // 24 hours
 
-  if (!end || Number.isNaN(end)) {
-    end = Date.now() + duration;
-    localStorage.setItem(key, String(end));
+  let endTime = Number(localStorage.getItem(STORAGE_KEY));
+  const now = Date.now();
+
+  // If there is no saved end time, it is corrupted, or the offer already ended,
+  // start a fresh 24-hour countdown instead of staying at 00:00:00 forever.
+  if (!endTime || Number.isNaN(endTime) || endTime <= now) {
+    endTime = now + OFFER_DURATION;
+    localStorage.setItem(STORAGE_KEY, String(endTime));
   }
 
   const hoursEl = document.getElementById("hours");
   const minutesEl = document.getElementById("minutes");
   const secondsEl = document.getElementById("seconds");
 
-  const update = () => {
-    const remaining = Math.max(0, end - Date.now());
-    const hours = Math.floor(remaining / 36e5);
-    const minutes = Math.floor((remaining / 6e4) % 60);
-    const seconds = Math.floor((remaining / 1e3) % 60);
+  if (!hoursEl || !minutesEl || !secondsEl) return;
 
-    if (hoursEl) hoursEl.textContent = String(hours).padStart(2, "0");
-    if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, "0");
-    if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, "0");
-  };
+  function updateCountdown() {
+    let remaining = Math.max(0, endTime - Date.now());
 
-  update();
-  setInterval(update, 1000);
-}function setupReveal(){const els=document.querySelectorAll(".reveal");const reveal=()=>els.forEach(e=>{if(e.getBoundingClientRect().top<window.innerHeight-70)e.classList.add("active")});reveal();window.addEventListener("scroll",reveal)}function setupMenu(){const btn=document.getElementById("menuBtn"),links=document.getElementById("navLinks");if(!btn||!links)return;btn.addEventListener("click",()=>links.classList.toggle("open"));links.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>links.classList.remove("open")))}function setupOrderForm(){const select=document.getElementById("productSelect");const orderForm=document.getElementById("orderForm");if(!select||!orderForm)return;select.addEventListener("change",()=>{selectedProductId=select.value;updateSelectedProduct()});orderForm.addEventListener("submit",e=>{e.preventDefault();const p=products.find(i=>i.id===selectedProductId);const name=document.getElementById("customerName").value.trim(),phone=document.getElementById("customerPhone").value.trim(),address=document.getElementById("customerAddress").value.trim(),payment=document.getElementById("paymentMethod").value,notes=document.getElementById("customerNotes").value.trim()||"-",total=p.price+DELIVERY_FEE;const msg=`🛍️ New Modo Order%0A%0AProduct: ${p[currentLang].name}%0APrice: ${p.price} EGP%0ADelivery: ${DELIVERY_FEE} EGP%0ATotal: ${total} EGP%0A%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}%0APayment: ${payment}%0ANotes: ${notes}`;window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`,"_blank")})}document.getElementById("langToggle").addEventListener("click",()=>{currentLang=currentLang==="ar"?"en":"ar";applyTranslations()});renderProducts();renderProductOptions();applyTranslations();setupGallery();setupCountdown();setupReveal();setupMenu();setupOrderForm();
+    if (remaining <= 0) {
+      endTime = Date.now() + OFFER_DURATION;
+      localStorage.setItem(STORAGE_KEY, String(endTime));
+      remaining = Math.max(0, endTime - Date.now());
+    }
+
+    const hours = Math.floor(remaining / (1000 * 60 * 60));
+    const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+
+    hoursEl.textContent = String(hours).padStart(2, "0");
+    minutesEl.textContent = String(minutes).padStart(2, "0");
+    secondsEl.textContent = String(seconds).padStart(2, "0");
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+}
+function setupReveal(){const els=document.querySelectorAll(".reveal");const reveal=()=>els.forEach(e=>{if(e.getBoundingClientRect().top<window.innerHeight-70)e.classList.add("active")});reveal();window.addEventListener("scroll",reveal)}function setupMenu(){const btn=document.getElementById("menuBtn"),links=document.getElementById("navLinks");if(!btn||!links)return;btn.addEventListener("click",()=>links.classList.toggle("open"));links.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>links.classList.remove("open")))}function setupOrderForm(){const select=document.getElementById("productSelect");const orderForm=document.getElementById("orderForm");if(!select||!orderForm)return;select.addEventListener("change",()=>{selectedProductId=select.value;updateSelectedProduct()});orderForm.addEventListener("submit",e=>{e.preventDefault();const p=products.find(i=>i.id===selectedProductId);const name=document.getElementById("customerName").value.trim(),phone=document.getElementById("customerPhone").value.trim(),address=document.getElementById("customerAddress").value.trim(),payment=document.getElementById("paymentMethod").value,notes=document.getElementById("customerNotes").value.trim()||"-",total=p.price+DELIVERY_FEE;const msg=`🛍️ New Modo Order%0A%0AProduct: ${p[currentLang].name}%0APrice: ${p.price} EGP%0ADelivery: ${DELIVERY_FEE} EGP%0ATotal: ${total} EGP%0A%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}%0APayment: ${payment}%0ANotes: ${notes}`;window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`,"_blank")})}document.getElementById("langToggle").addEventListener("click",()=>{currentLang=currentLang==="ar"?"en":"ar";applyTranslations()});renderProducts();renderProductOptions();applyTranslations();setupGallery();setupCountdown();setupReveal();setupMenu();setupOrderForm();
 
 /* ===== Live Review System: Firebase Firestore + Cloudinary image upload =====
    Replace these placeholders to make reviews live for everyone.
