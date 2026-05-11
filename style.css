@@ -1001,3 +1001,29 @@ html[dir="ltr"] #paymentMethod {
     text-align: center;
   }
 }
+
+
+
+/* ===== FAQ preview single CTA button ===== */
+.faq-preview-actions {
+  margin-top: 26px;
+}
+
+.faq-read-more-btn {
+  min-width: 260px;
+  border-color: rgba(255,214,119,.35) !important;
+  background: rgba(255,255,255,.045) !important;
+  color: #fff !important;
+}
+
+.faq-read-more-btn:hover {
+  color: #070707 !important;
+  background: linear-gradient(135deg, var(--gold2), var(--gold)) !important;
+  border-color: transparent !important;
+}
+
+@media (max-width: 780px) {
+  .faq-read-more-btn {
+    width: 100%;
+  }
+}
