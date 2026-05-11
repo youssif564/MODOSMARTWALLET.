@@ -1272,3 +1272,42 @@ html[dir="ltr"] #paymentMethod {
 .review-card p:empty {
   display: none;
 }
+
+
+
+/* ===== Final mobile conversion fixes ===== */
+
+/* Hero headline: force cleaner 1-2 line mobile appearance */
+@media (max-width: 620px) {
+  .hero h1 {
+    font-size: clamp(1.75rem, 9.2vw, 2.55rem) !important;
+    line-height: 1.12 !important;
+    max-width: 92%;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero h1 {
+    font-size: clamp(1.65rem, 8.8vw, 2.25rem) !important;
+  }
+}
+
+/* Sticky CTA should not appear while user is still in hero */
+.sticky-mobile-cta {
+  transform: translateY(120%) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: transform .25s ease, opacity .25s ease !important;
+}
+
+.sticky-mobile-cta.show {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* Cleaner Smart Wallet checklist spacing after reducing item count */
+.product-features {
+  margin-top: 14px;
+}
