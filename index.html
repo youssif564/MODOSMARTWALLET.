@@ -115,7 +115,7 @@
   </script>
 </head>
 <body>
-  <div class="top-strip"><span data-i18n="topOffer">عرض لفترة محدودة — شحن سريع والدفع عند الاستلام داخل مصر</span></div>
+  <div class="top-strip"><span data-i18n="topOffer">عرض إطلاق لأول 25 قطعة فقط — شحن سريع والدفع عند الاستلام داخل مصر</span></div>
 
   <header class="site-header">
     <div class="container nav">
@@ -278,7 +278,40 @@
       </div>
     </section>
 
-<section class="section order-section" id="order">
+
+    <section class="section faq-preview-section" id="faq-preview">
+      <div class="container">
+        <div class="section-head reveal">
+          <span data-i18n="faqPreviewEyebrow">قبل ما تطلب</span>
+          <h2 data-i18n="faqPreviewTitle">أسئلة مهمة قبل الشراء</h2>
+          <p data-i18n="faqPreviewSubtitle">إجابات سريعة على أهم الاعتراضات قبل ما تكمل الطلب.</p>
+        </div>
+
+        <div class="faq-preview-grid">
+          <article class="faq-preview-card reveal">
+            <h3 data-i18n="faqLeatherQ">هل الجلد حقيقي؟</h3>
+            <p data-i18n="faqLeatherA">نعم، محافظ Modo مصنوعة من جلد طبيعي بتشطيب فاخر مناسب للاستخدام اليومي.</p>
+          </article>
+
+          <article class="faq-preview-card reveal">
+            <h3 data-i18n="faqGuaranteeQ">ما هي ضمانة المنتج؟</h3>
+            <p data-i18n="faqGuaranteeA">يتم فحص المنتج قبل الشحن، ويوجد استبدال خلال 7 أيام في حالة وجود عيب تصنيع.</p>
+          </article>
+
+          <article class="faq-preview-card reveal">
+            <h3 data-i18n="faqPaymentQ">هل يوجد دفع عند الاستلام؟</h3>
+            <p data-i18n="faqPaymentA">نعم، الدفع عند الاستلام متاح داخل مصر، مع تأكيد الطلب على واتساب قبل الشحن.</p>
+          </article>
+        </div>
+
+        <div class="faq-preview-actions reveal">
+          <a href="faq.html" class="btn btn-secondary" data-i18n="moreFAQ">أسئلة أكثر</a>
+          <a href="faq.html" class="read-more-link" data-i18n="readMoreFAQ">اقرأ المزيد عن Modo Wallet</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section order-section" id="order">
       <div class="container order-grid order-grid-single">
         <form class="order-form reveal" id="orderForm">
           <div class="order-form-head">
@@ -318,6 +351,7 @@
           <textarea id="customerNotes" placeholder="أي ملاحظات للتوصيل؟"></textarea>
 
           <button type="submit" class="btn btn-primary order-submit" data-i18n="submitOrder">إرسال الطلب على واتساب</button>
+          <p class="order-success-message" id="orderSuccess" hidden data-i18n="orderSuccess">شكراً! سنتواصل معك خلال ساعات</p>
           <p class="form-note">🔒 <span data-i18n="formNote">بياناتك تستخدم لتأكيد الطلب فقط.</span></p>
         </form>
       </div>
