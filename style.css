@@ -1311,3 +1311,45 @@ html[dir="ltr"] #paymentMethod {
 .product-features {
   margin-top: 14px;
 }
+
+
+/* ===== English layout: keep logo on the left ===== */
+html[dir="ltr"] .nav {
+  flex-direction: row !important;
+}
+
+html[dir="ltr"] .brand-logo {
+  order: 0 !important;
+  margin-right: auto !important;
+  margin-left: 0 !important;
+  transform: none !important;
+  justify-content: flex-start !important;
+}
+
+html[dir="ltr"] .nav-links {
+  order: 1 !important;
+}
+
+html[dir="ltr"] .nav-actions {
+  order: 2 !important;
+}
+
+html[dir="ltr"] .brand-logo img {
+  object-position: left center !important;
+}
+
+@media (max-width: 700px) {
+  html[dir="ltr"] .brand-logo {
+    margin-left: -4px !important;
+    margin-right: auto !important;
+    transform: translateX(-4px) !important;
+  }
+}
+
+@media (max-width: 420px) {
+  html[dir="ltr"] .brand-logo {
+    margin-left: -6px !important;
+    margin-right: auto !important;
+    transform: translateX(-6px) !important;
+  }
+}
