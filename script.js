@@ -144,6 +144,24 @@ function setupReveal(){const els=document.querySelectorAll(".reveal");const reve
     const payment=document.getElementById("paymentMethod").value;
     const notes=document.getElementById("customerNotes").value.trim()||"-";
     const total=p.price+DELIVERY_FEE;
+    if (typeof fbq === "function") {
+      fbq("track", "Lead", {
+        content_name: p[currentLang].name,
+        content_ids: [p.id],
+        content_type: "product",
+        currency: "EGP",
+        value: total
+      });
+
+      fbq("trackCustom", "WhatsAppOrderClick", {
+        product: p[currentLang].name,
+        product_id: p.id,
+        payment_method: payment,
+        currency: "EGP",
+        value: total
+      });
+    }
+
 
     const success=document.getElementById("orderSuccess");
     if(success){
