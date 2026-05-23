@@ -45,6 +45,17 @@ Object.assign(translations.en, {
   topOffer: "Launch offer for the first 25 pieces only — fast delivery and Cash on Delivery in Egypt"
 });
 
+
+/* ===== How separate page translation keys ===== */
+Object.assign(translations.ar, {
+  howCtaTitle: "جاهز تجرب MODO؟",
+  howCtaText: "اختار المحفظة المناسبة، وسيتم تأكيد طلبك على واتساب قبل الشحن."
+});
+Object.assign(translations.en, {
+  howCtaTitle: "Ready to try MODO?",
+  howCtaText: "Choose your wallet, and your order will be confirmed on WhatsApp before shipping."
+});
+
 function t(k){return translations[currentLang][k]||k}function money(v){return `${v.toLocaleString()} EGP`}function applyTranslations(){
   document.documentElement.lang = currentLang;
   document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
