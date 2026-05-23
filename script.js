@@ -11,43 +11,25 @@ function normalizeEgyptPhoneForWhatsApp(phone) {
   return digits;
 }
 
-function loadEmailJSSDK() {
-  if (window.emailjs) return Promise.resolve(window.emailjs);
-
-  return new Promise((resolve, reject) => {
-    const existing = document.querySelector('script[data-modo-emailjs="true"]');
-    if (existing) {
-      existing.addEventListener("load", () => resolve(window.emailjs));
-      existing.addEventListener("error", reject);
-      return;
-    }
-
-    const sdkScript = document.createElement("script");
-    sdkScript.src = "https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js";
-    sdkScript.async = true;
-    sdkScript.dataset.modoEmailjs = "true";
-    sdkScript.onload = () => resolve(window.emailjs);
-    sdkScript.onerror = () => reject(new Error("EmailJS SDK failed to load."));
-    document.head.appendChild(sdkScript);
-  });
-}
-
 async function sendOrderEmailViaEmailJS(orderData) {
   try {
-    const emailjsClient = await loadEmailJSSDK();
-    if (!emailjsClient) throw new Error("EmailJS client is unavailable.");
+    const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        service_id: EMAILJS_SERVICE_ID,
+        template_id: EMAILJS_TEMPLATE_ID,
+        user_id: EMAILJS_PUBLIC_KEY,
+        template_params: orderData
+      })
+    });
 
-    if (!window.__modoEmailJsReady) {
-      emailjsClient.init(EMAILJS_PUBLIC_KEY);
-      window.__modoEmailJsReady = true;
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`EmailJS error ${response.status}: ${errorText}`);
     }
-
-    await emailjsClient.send(
-      EMAILJS_SERVICE_ID,
-      EMAILJS_TEMPLATE_ID,
-      orderData,
-      EMAILJS_PUBLIC_KEY
-    );
 
     console.log("MODO order email sent successfully.");
     return true;
@@ -265,7 +247,14 @@ function setupReveal(){const els=document.querySelectorAll(".reveal");const reve
     };
 
     // Send automated order email to you through EmailJS.
-    await sendOrderEmailViaEmailJS(orderData);
+    const emailSent = await sendOrderEmailViaEmailJS(orderData);
+    if(success){
+      success.textContent = emailSent
+        ? t("orderSuccess")
+        : (currentLang === "ar"
+            ? "تم فتح واتساب، لكن الإيميل التلقائي لم يصل. سنراجع الإعدادات."
+            : "WhatsApp opened, but the automatic email did not send. Please check settings.");
+    }
 
     const msg=`🛍️ New Modo Order%0A%0AProduct: ${productName}%0APrice: ${p.price} EGP%0ADelivery: ${DELIVERY_FEE} EGP%0ATotal: ${total} EGP%0A%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}%0APayment: ${payment}%0ANotes: ${notes}`;
 
