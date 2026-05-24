@@ -1667,3 +1667,52 @@ html[dir="ltr"] .brand-logo img {
   color: #070707 !important;
   border: 0 !important;
 }
+
+/* =========================================================
+   MODO: Compact UGC + Remove homepage FAQ spacing
+   ========================================================= */
+
+.ugc-proof-compact {
+  padding: 44px 0 !important;
+}
+
+.ugc-proof-compact .section-head {
+  margin-bottom: 22px !important;
+  text-align: center !important;
+}
+
+.ugc-proof-compact .section-head h2 {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.ugc-proof-compact .ugc-video-card {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.ugc-proof-compact .ugc-video-card video {
+  max-height: 520px;
+  object-fit: contain;
+}
+
+@media (max-width: 780px) {
+  .ugc-proof-compact {
+    padding: 34px 0 !important;
+  }
+
+  .ugc-proof-compact .section-head {
+    margin-bottom: 16px !important;
+  }
+
+  .ugc-proof-compact .ugc-video-card {
+    padding: 8px !important;
+    border-radius: 22px !important;
+  }
+
+  .ugc-proof-compact .ugc-video-card video {
+    max-height: 430px;
+    border-radius: 16px !important;
+  }
+}
+
