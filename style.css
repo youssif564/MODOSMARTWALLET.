@@ -1420,4 +1420,250 @@ html[dir="ltr"] .brand-logo img {
   }
 }
 
+/* =========================================================
+   MODO CONVERSION + UGC UPDATE
+   Uses current CSS as base.
+   ========================================================= */
 
+/* Sticky CTA appears only after hero and is slimmer */
+@media (max-width: 620px) {
+  .sticky-mobile-cta {
+    min-height: 46px !important;
+    height: 46px !important;
+    bottom: 10px !important;
+    inset-inline: 18px !important;
+    font-size: 0.96rem !important;
+    padding: 0 16px !important;
+    border-radius: 999px !important;
+  }
+
+  .sticky-mobile-cta:not(.show) {
+    transform: translateY(130%) !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .sticky-mobile-cta.show {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .whatsapp-float {
+    width: 46px !important;
+    height: 46px !important;
+    font-size: 1.35rem !important;
+    bottom: 72px !important;
+    inset-inline-start: 18px !important;
+    z-index: 999 !important;
+  }
+
+  .whatsapp-float svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+}
+
+/* UGC proof section after hero */
+.ugc-proof-section {
+  padding: 58px 0;
+  background:
+    radial-gradient(circle at 72% 10%, rgba(255,214,119,.12), transparent 34%),
+    linear-gradient(180deg, #000, #050505);
+  border-top: 1px solid rgba(255,255,255,.07);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+}
+
+.ugc-proof-grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.ugc-proof-copy > span {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  background: #1A1A1A;
+  color: rgba(255,255,255,.78);
+  border: 1px solid rgba(255,255,255,.12);
+  padding: 8px 15px;
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+
+.ugc-proof-copy h2 {
+  font-size: clamp(2rem, 4.2vw, 3.7rem);
+  line-height: 1.12;
+  margin-bottom: 12px;
+}
+
+.ugc-proof-copy > p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.85;
+  margin-bottom: 18px;
+}
+
+.ugc-proof-points {
+  display: grid;
+  gap: 12px;
+}
+
+.ugc-proof-points div {
+  background: #1A1A1A;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 18px;
+  padding: 15px 16px;
+}
+
+.ugc-proof-points strong {
+  color: #FFD677;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.ugc-proof-points p {
+  color: rgba(255,255,255,.68);
+  margin: 0;
+}
+
+.ugc-video-card {
+  background: #111;
+  border: 1px solid rgba(255,214,119,.18);
+  border-radius: 28px;
+  padding: 12px;
+  box-shadow: 0 24px 70px rgba(0,0,0,.38);
+}
+
+.ugc-video-card video {
+  width: 100%;
+  display: block;
+  border-radius: 20px;
+  max-height: 520px;
+  background: #000;
+  object-fit: contain;
+}
+
+@media (max-width: 860px) {
+  .ugc-proof-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ugc-proof-section {
+    padding: 44px 0;
+  }
+
+  .ugc-video-card video {
+    max-height: 430px;
+  }
+}
+
+/* Shorter, cleaner product text */
+.product-card p {
+  line-height: 1.65 !important;
+}
+
+.product-features {
+  gap: 7px !important;
+  margin-bottom: 12px !important;
+}
+
+.product-features li {
+  font-size: .94rem !important;
+  line-height: 1.55 !important;
+}
+
+/* Premium read more inside product card */
+.premium-more {
+  margin: 4px 0 14px;
+  border-radius: 18px;
+  background: #1A1A1A;
+  border: 1px solid rgba(255,255,255,.10);
+  overflow: hidden;
+}
+
+.premium-more summary {
+  cursor: pointer;
+  list-style: none;
+  min-height: 46px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #FFD677;
+  font-weight: 900;
+}
+
+.premium-more summary::-webkit-details-marker {
+  display: none;
+}
+
+.premium-more summary::after {
+  content: "⌄";
+  color: rgba(255,255,255,.62);
+  font-size: 1.05rem;
+  transition: transform .2s ease;
+}
+
+.premium-more[open] summary::after {
+  transform: rotate(180deg);
+}
+
+.premium-more-body {
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: 14px;
+}
+
+.premium-more-body strong {
+  display: block;
+  color: #fff;
+  margin-bottom: 7px;
+}
+
+.premium-more-body p {
+  color: rgba(255,255,255,.68) !important;
+  margin-bottom: 10px !important;
+}
+
+.premium-more-body ul {
+  list-style: none;
+  display: grid;
+  gap: 7px;
+}
+
+.premium-more-body li {
+  color: rgba(255,255,255,.72);
+  font-size: .92rem;
+}
+
+.premium-more-body li::before {
+  content: "✓";
+  color: #FFD677;
+  font-weight: 900;
+  margin-inline-end: 8px;
+}
+
+/* Fix common product-language polish */
+.product-subheadline,
+.product-card h3,
+.product-card p,
+.product-features li,
+.premium-more {
+  word-break: normal;
+}
+
+/* Buttons stay gold where they are real CTAs */
+.hero-actions .btn,
+.product-actions .btn,
+.faq-preview-actions .btn,
+.faq-cta-card .btn,
+.reviews-toggle-btn,
+.write-review-toggle,
+.order-submit,
+.sticky-mobile-cta {
+  background: linear-gradient(135deg, #FFD677, #D7AD42) !important;
+  color: #070707 !important;
+  border: 0 !important;
+}
