@@ -1419,3 +1419,425 @@ html[dir="ltr"] .brand-logo img {
     text-align: start !important;
   }
 }
+
+/* =========================================================
+   MODO FINAL BRAND COLOR SYSTEM
+   Rule:
+   - GOLD = real buttons / purchase actions only
+   - GRAY = data, labels, badges, cards, menu items, info blocks
+   ========================================================= */
+
+:root {
+  --gold: #D7AD42;
+  --gold2: #FFD677;
+
+  --modo-button: #FFD677;
+  --modo-button-dark: #D7AD42;
+  --modo-button-text: #070707;
+
+  --modo-data: #1A1A1A;
+  --modo-data-dark: #111111;
+  --modo-data-soft: #151515;
+
+  --modo-border: rgba(255,255,255,0.09);
+  --modo-border-strong: rgba(255,255,255,0.14);
+
+  --modo-text: #ffffff;
+  --modo-text-soft: rgba(255,255,255,0.76);
+  --modo-text-muted: rgba(255,255,255,0.56);
+}
+
+/* GOLD ONLY FOR REAL CTAs */
+.btn-primary,
+.mini-cta,
+.order-submit,
+.choose-btn,
+.sticky-mobile-cta,
+.hero-actions .btn-primary,
+.product-actions .btn-primary,
+.faq-cta-card .btn-primary,
+button[type="submit"] {
+  background: linear-gradient(135deg, var(--modo-button), var(--modo-button-dark)) !important;
+  color: var(--modo-button-text) !important;
+  border: 0 !important;
+  box-shadow: 0 14px 34px rgba(255,214,119,0.22) !important;
+  font-weight: 900 !important;
+}
+
+.btn-primary:hover,
+.mini-cta:hover,
+.order-submit:hover,
+.choose-btn:hover,
+.sticky-mobile-cta:hover,
+.hero-actions .btn-primary:hover,
+.product-actions .btn-primary:hover,
+.faq-cta-card .btn-primary:hover,
+button[type="submit"]:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 42px rgba(255,214,119,0.28) !important;
+}
+
+/* Secondary clickable buttons */
+.btn-secondary,
+.faq-read-more-btn,
+.reviews-toggle-btn,
+.write-review-toggle,
+.review-toggle,
+#showAllReviews,
+#writeReviewBtn,
+.read-more-btn,
+.view-all-btn {
+  background: var(--modo-data) !important;
+  color: var(--modo-text) !important;
+  border: 1px solid var(--modo-border-strong) !important;
+  box-shadow: none !important;
+  font-weight: 900 !important;
+}
+
+.btn-secondary:hover,
+.faq-read-more-btn:hover,
+.reviews-toggle-btn:hover,
+.write-review-toggle:hover,
+.review-toggle:hover,
+#showAllReviews:hover,
+#writeReviewBtn:hover,
+.read-more-btn:hover,
+.view-all-btn:hover {
+  background: #222 !important;
+  color: var(--modo-button) !important;
+  border-color: rgba(255,214,119,0.32) !important;
+}
+
+/* DATA / INFO = GRAY SYSTEM */
+.gallery-card,
+.order-form,
+.selected-product-card,
+.selected-product-card-inline,
+.payment-box,
+.product-card,
+.step-card,
+.trust-card,
+.review-card,
+.live-review-form,
+.reviews-toolbar,
+.story-card,
+.story-visual,
+.story-value-card,
+.faq-card,
+.faq-preview-card,
+.faq-cta-card,
+.seo-keyword-card,
+.seo-info-box,
+.steps-panel,
+.stat-grid,
+.stats-grid,
+.hero-stats,
+.proof-grid,
+.seo-proof-grid,
+.order-summary {
+  background: var(--modo-data) !important;
+  border: 1px solid var(--modo-border) !important;
+  box-shadow: none !important;
+}
+
+/* Non-clickable badges / chips / labels */
+.hero-badge,
+.story-eyebrow,
+.seo-badge,
+.product-tag,
+.section-head span,
+.order-form-head span,
+.order-summary > span,
+.trust-copy > span,
+.feature-chip,
+.info-chip,
+.about-tag,
+.label-chip,
+.badge,
+.trust-badge,
+.hero-trust span,
+.trust-badges span,
+.hero-pills span,
+.hero-tags span,
+.hero-features span,
+.payment-methods span {
+  background: var(--modo-data) !important;
+  color: var(--modo-text-soft) !important;
+  border: 1px solid var(--modo-border-strong) !important;
+  box-shadow: none !important;
+}
+
+/* STATS / INFO BOXES */
+.seo-proof-grid,
+.hero-stats,
+.stat-grid,
+.stats-grid {
+  background: var(--modo-data) !important;
+  border: 1px solid var(--modo-border) !important;
+  border-radius: 24px !important;
+  overflow: hidden;
+}
+
+.seo-proof-grid div,
+.hero-stats > *,
+.stat-card,
+.stat-item,
+.proof-grid div {
+  background: transparent !important;
+  border-color: var(--modo-border) !important;
+  box-shadow: none !important;
+}
+
+.seo-proof-grid strong,
+.proof-grid strong,
+.stat-card strong,
+.stat-item strong,
+.stat-value,
+.hero-stats strong {
+  color: var(--modo-button) !important;
+  font-weight: 900 !important;
+}
+
+.seo-proof-grid span,
+.proof-grid span,
+.stat-card span,
+.stat-item span,
+.stat-label,
+.hero-stats span {
+  color: var(--modo-text-soft) !important;
+}
+
+/* PRODUCT CARDS */
+.product-card {
+  background: var(--modo-data-dark) !important;
+  border: 1px solid var(--modo-border) !important;
+}
+
+.product-card.featured {
+  border-color: rgba(255,214,119,0.22) !important;
+}
+
+.product-tag {
+  top: 14px !important;
+  inset-inline-start: 18px !important;
+  font-size: 0.92rem !important;
+  padding: 8px 14px !important;
+  border-radius: 999px !important;
+}
+
+.product-card h3 {
+  color: var(--modo-text) !important;
+}
+
+.product-subheadline,
+.product-card p,
+.product-features li {
+  color: var(--modo-text-soft) !important;
+}
+
+.product-features li::before {
+  color: var(--modo-button) !important;
+  font-weight: 900 !important;
+}
+
+.new-price,
+.price,
+.product-price,
+.selected-product-card-inline strong,
+.selected-product-card strong {
+  color: var(--modo-button) !important;
+}
+
+.old-price {
+  color: var(--modo-text-muted) !important;
+}
+
+/* FAQ / INFORMATION CARDS */
+.faq-preview-card,
+.faq-card {
+  background: var(--modo-data) !important;
+  border: 1px solid var(--modo-border) !important;
+  border-inline-start: 3px solid rgba(255,214,119,0.28) !important;
+  cursor: default !important;
+  transform: none !important;
+}
+
+.faq-preview-card:hover,
+.faq-card:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.faq-preview-card h3,
+.faq-card h3 {
+  color: var(--modo-button) !important;
+}
+
+.faq-preview-card p,
+.faq-card p {
+  color: var(--modo-text-soft) !important;
+}
+
+/* MOBILE MENU = GRAY DATA ITEMS */
+.nav-links,
+.mobile-menu,
+.mobile-menu-panel {
+  background: rgba(10,10,10,0.98) !important;
+  border: 1px solid var(--modo-border) !important;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.45) !important;
+}
+
+.nav-links a,
+.nav-about,
+.nav-about summary,
+.mobile-menu a,
+.mobile-menu .menu-item,
+.mobile-menu .dropdown-trigger {
+  background: var(--modo-data) !important;
+  color: var(--modo-text-soft) !important;
+  border: 1px solid var(--modo-border) !important;
+  box-shadow: none !important;
+}
+
+.nav-links a:hover,
+.nav-about summary:hover,
+.mobile-menu a:hover,
+.mobile-menu .menu-item:hover {
+  color: var(--modo-button) !important;
+  border-color: rgba(255,214,119,0.25) !important;
+}
+
+/* Hamburger and language switcher stay neutral */
+.menu-btn,
+.lang-btn {
+  background: transparent !important;
+  color: var(--modo-text) !important;
+  border: 1px solid var(--modo-border-strong) !important;
+  box-shadow: none !important;
+}
+
+.lang-btn {
+  border-color: transparent !important;
+}
+
+.menu-btn:hover,
+.lang-btn:hover {
+  color: var(--modo-button) !important;
+  border-color: rgba(255,214,119,0.35) !important;
+}
+
+/* FORM / DROPDOWNS */
+.order-form input,
+.order-form textarea,
+.live-review-form input,
+.live-review-form textarea,
+.live-review-form select,
+input,
+textarea {
+  background: var(--modo-data) !important;
+  color: var(--modo-text) !important;
+  border: 1px solid var(--modo-border-strong) !important;
+  box-shadow: none !important;
+}
+
+.order-form input:focus,
+.order-form textarea:focus,
+.live-review-form input:focus,
+.live-review-form textarea:focus,
+.live-review-form select:focus,
+input:focus,
+textarea:focus {
+  border-color: rgba(255,214,119,0.45) !important;
+  box-shadow: 0 0 0 3px rgba(255,214,119,0.08) !important;
+  outline: none !important;
+}
+
+/* Dropdowns are clickable controls, so they look button-like but not gold-filled */
+.order-form select,
+#productSelect,
+#paymentMethod,
+.form-select,
+.dropdown {
+  background: linear-gradient(180deg, #202020, #111111) !important;
+  color: var(--modo-text) !important;
+  border: 1.5px solid rgba(255,214,119,0.32) !important;
+  box-shadow:
+    0 10px 24px rgba(0,0,0,0.28),
+    inset 0 1px 0 rgba(255,255,255,0.05) !important;
+}
+
+.order-form select:hover,
+#productSelect:hover,
+#paymentMethod:hover,
+.form-select:hover,
+.dropdown:hover {
+  border-color: rgba(255,214,119,0.55) !important;
+}
+
+/* REVIEWS */
+.review-card {
+  background: var(--modo-data) !important;
+  border: 1px solid var(--modo-border) !important;
+}
+
+.stars {
+  color: #fff4c7 !important;
+}
+
+.review-card p {
+  color: var(--modo-text-soft) !important;
+}
+
+.review-card strong {
+  color: var(--modo-text) !important;
+}
+
+.review-meta {
+  color: var(--modo-text-muted) !important;
+}
+
+/* SUCCESS MESSAGE / WHATSAPP */
+.order-success-message {
+  background: linear-gradient(135deg, #d7ffdf, #8dffad) !important;
+  color: #071007 !important;
+  border: 1px solid rgba(37,211,102,0.45) !important;
+}
+
+.whatsapp-float {
+  background: #25D366 !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: 0 14px 38px rgba(37,211,102,0.28) !important;
+}
+
+/* MOBILE CLEANUP */
+@media (max-width: 780px) {
+  .product-card,
+  .faq-preview-card,
+  .faq-card,
+  .review-card,
+  .step-card,
+  .trust-card,
+  .feature-card {
+    border-radius: 22px !important;
+  }
+
+  .nav-links a,
+  .nav-about,
+  .nav-about summary {
+    border-radius: 16px !important;
+  }
+
+  .hero-badge,
+  .story-eyebrow,
+  .seo-badge,
+  .product-tag,
+  .section-head span,
+  .feature-chip,
+  .info-chip,
+  .about-tag,
+  .label-chip,
+  .payment-methods span {
+    border-radius: 999px !important;
+  }
+}
