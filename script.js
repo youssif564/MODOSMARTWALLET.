@@ -38,11 +38,24 @@ async function sendOrderEmailViaEmailJS(orderData) {
     return false;
   }
 }
-const DELIVERY_FEE=100;let currentLang=localStorage.getItem("modoLang") || "ar";let selectedProductId="smart";const products=[
+const DELIVERY_REGIONS={
+  cairo_giza:{ar:"القاهرة والجيزة",en:"Cairo & Giza",fee:100},
+  alex:{ar:"الإسكندرية",en:"Alexandria",fee:110},
+  delta_canal:{ar:"الدلتا والقناة",en:"Delta & Canal",fee:115},
+  assiut:{ar:"أسيوط",en:"Assiut",fee:180},
+  northcoast:{ar:"الساحل الشمالي",en:"North Coast",fee:200}
+};
+let selectedDeliveryRegion="cairo_giza";
+function getDeliveryRegion(){
+  const select=document.getElementById("deliveryRegion");
+  const key=(select&&DELIVERY_REGIONS[select.value])?select.value:selectedDeliveryRegion;
+  return {key,...DELIVERY_REGIONS[key]};
+}
+function getDeliveryFee(){return getDeliveryRegion().fee;}let currentLang=localStorage.getItem("modoLang") || "ar";let selectedProductId="smart";const products=[
   {
     id:"smart",
     oldPrice:799,
-    price:550,
+    price:650,
     image:"smart-wallet.jpg",
     featured:true,
     ar:{
@@ -61,7 +74,7 @@ const DELIVERY_FEE=100;let currentLang=localStorage.getItem("modoLang") || "ar";
   {
     id:"classic",
     oldPrice:499,
-    price:370,
+    price:450,
     image:"classic-wallet.jpg",
     featured:false,
     ar:{
@@ -185,7 +198,37 @@ Object.assign(translations.en, {
   readLessProduct: "Show less"
 });
 
-function t(k){return translations[currentLang][k]||k}function money(v){return `${v.toLocaleString()} EGP`}function applyTranslations(){
+
+/* ===== Delivery regions translation keys ===== */
+Object.assign(translations.ar, {
+  formDeliveryRegion: "منطقة التوصيل",
+  deliveryCairoGiza: "القاهرة والجيزة — 100 جنيه توصيل",
+  deliveryAlex: "الإسكندرية — 110 جنيه توصيل",
+  deliveryDeltaCanal: "الدلتا والقناة — 115 جنيه توصيل",
+  deliveryAssiut: "أسيوط — 180 جنيه توصيل",
+  deliveryNorthCoast: "الساحل الشمالي — 200 جنيه توصيل",
+  deliveryFeeLabel: "رسوم التوصيل"
+});
+Object.assign(translations.en, {
+  formDeliveryRegion: "Delivery area",
+  deliveryCairoGiza: "Cairo & Giza — 100 EGP delivery",
+  deliveryAlex: "Alexandria — 110 EGP delivery",
+  deliveryDeltaCanal: "Delta & Canal — 115 EGP delivery",
+  deliveryAssiut: "Assiut — 180 EGP delivery",
+  deliveryNorthCoast: "North Coast — 200 EGP delivery",
+  deliveryFeeLabel: "Delivery fee"
+});
+
+function t(k){return translations[currentLang][k]||k}
+function updateDeliveryFeeNote(){
+  const note=document.getElementById("deliveryFeeNote");
+  const region=getDeliveryRegion();
+  if(note){
+    note.textContent=`${t("deliveryFeeLabel")}: ${money(region.fee)}`;
+  }
+}
+
+function money(v){return `${v.toLocaleString()} EGP`}function applyTranslations(){
   document.documentElement.lang = currentLang;
   document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
   document.body.classList.toggle("en", currentLang === "en");
@@ -223,6 +266,8 @@ function t(k){return translations[currentLang][k]||k}function money(v){return `$
   renderProducts();
   renderProductOptions();
   updateSelectedProduct();
+
+  updateDeliveryFeeNote();
 }function renderProducts(){
   const grid=document.getElementById("productsGrid");
   if(!grid)return;
@@ -304,6 +349,7 @@ function renderProductOptions(){const s=document.getElementById("productSelect")
 }
 function setupReveal(){const els=document.querySelectorAll(".reveal");const reveal=()=>els.forEach(e=>{if(e.getBoundingClientRect().top<window.innerHeight-70)e.classList.add("active")});reveal();window.addEventListener("scroll",reveal)}function setupMenu(){const btn=document.getElementById("menuBtn"),links=document.getElementById("navLinks");if(!btn||!links)return;btn.addEventListener("click",()=>links.classList.toggle("open"));links.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>links.classList.remove("open")))}function setupOrderForm(){
   const select=document.getElementById("productSelect");
+  const deliverySelect=document.getElementById("deliveryRegion");
   const orderForm=document.getElementById("orderForm");
   if(!select||!orderForm)return;
 
@@ -311,6 +357,13 @@ function setupReveal(){const els=document.querySelectorAll(".reveal");const reve
     selectedProductId=select.value;
     updateSelectedProduct();
   });
+
+  if(deliverySelect){
+    deliverySelect.addEventListener("change",()=>{
+      selectedDeliveryRegion=deliverySelect.value;
+      updateDeliveryFeeNote();
+    });
+  }
 
   orderForm.addEventListener("submit",async e=>{
     e.preventDefault();
@@ -320,8 +373,9 @@ function setupReveal(){const els=document.querySelectorAll(".reveal");const reve
     const phone=document.getElementById("customerPhone").value.trim();
     const address=document.getElementById("customerAddress").value.trim();
     const payment=document.getElementById("paymentMethod").value;
+    const deliveryRegion=getDeliveryRegion();
     const notes=document.getElementById("customerNotes").value.trim()||"-";
-    const total=p.price+DELIVERY_FEE;
+    const total=p.price+deliveryRegion.fee;
     const productName=p[currentLang].name;
 
     if (typeof fbq === "function") {
@@ -363,7 +417,9 @@ function setupReveal(){const els=document.querySelectorAll(".reveal");const reve
       payment_method: payment,
       notes: notes,
       price: p.price,
-      delivery: DELIVERY_FEE,
+      delivery_region: deliveryRegion[currentLang],
+      delivery_fee: deliveryRegion.fee,
+      delivery: deliveryRegion.fee,
       total: total,
       language: currentLang === "ar" ? "Arabic" : "English",
       whatsapp_phone: normalizeEgyptPhoneForWhatsApp(phone),
@@ -383,7 +439,7 @@ function setupReveal(){const els=document.querySelectorAll(".reveal");const reve
             : "WhatsApp opened, but the automatic email did not send. Please check settings.");
     }
 
-    const msg=`🛍️ New Modo Order%0A%0AProduct: ${productName}%0APrice: ${p.price} EGP%0ADelivery: ${DELIVERY_FEE} EGP%0ATotal: ${total} EGP%0A%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}%0APayment: ${payment}%0ANotes: ${notes}`;
+    const msg=`🛍️ New Modo Order%0A%0AProduct: ${productName}%0APrice: ${p.price} EGP%0ADelivery Area: ${deliveryRegion[currentLang]}%0ADelivery Fee: ${deliveryRegion.fee} EGP%0ATotal: ${total} EGP%0A%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}%0APayment: ${payment}%0ANotes: ${notes}`;
 
     setTimeout(()=>{
       window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`,"_blank");
@@ -811,3 +867,6 @@ function setupStickyCtaVisibility() {
   window.addEventListener("resize", updateStickyVisibility);
 }
 setupStickyCtaVisibility();
+
+updateDeliveryFeeNote();
+
