@@ -300,7 +300,7 @@ src="https://www.facebook.com/tr?id=1723439528639555&ev=PageView&noscript=1"
             <img src="smart-wallet.jpg" alt="" id="selectedProductImg">
             <div>
               <h3 id="selectedProductName">Modo Smart Wallet</h3>
-              <p><span class="old-price" id="selectedOldPrice">799 EGP</span> <strong id="selectedPrice">550 EGP</strong></p>
+              <p><span class="old-price" id="selectedOldPrice">799 EGP</span> <strong id="selectedPrice">650 EGP</strong></p>
             </div>
           </div>
 
@@ -315,6 +315,18 @@ src="https://www.facebook.com/tr?id=1723439528639555&ev=PageView&noscript=1"
 
           <label for="customerAddress" data-i18n="formAddress">العنوان بالتفصيل</label>
           <textarea id="customerAddress" required placeholder="المحافظة، المنطقة، الشارع، رقم العمارة"></textarea>
+
+
+          <label for="deliveryRegion" data-i18n="formDeliveryRegion">منطقة التوصيل</label>
+          <select id="deliveryRegion" required>
+            <option value="cairo_giza" data-i18n="deliveryCairoGiza">القاهرة والجيزة — 100 جنيه توصيل</option>
+            <option value="alex" data-i18n="deliveryAlex">الإسكندرية — 110 جنيه توصيل</option>
+            <option value="delta_canal" data-i18n="deliveryDeltaCanal">الدلتا والقناة — 115 جنيه توصيل</option>
+            <option value="assiut" data-i18n="deliveryAssiut">أسيوط — 180 جنيه توصيل</option>
+            <option value="northcoast" data-i18n="deliveryNorthCoast">الساحل الشمالي — 200 جنيه توصيل</option>
+          </select>
+
+          <p class="delivery-fee-note" id="deliveryFeeNote">رسوم التوصيل: 100 EGP</p>
 
           <label for="paymentMethod" data-i18n="formPayment">طريقة الدفع</label>
           <select id="paymentMethod" required>
