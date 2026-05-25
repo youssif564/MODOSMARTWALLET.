@@ -51,7 +51,13 @@ function getDeliveryRegion(){
   const key=(select&&DELIVERY_REGIONS[select.value])?select.value:selectedDeliveryRegion;
   return {key,...DELIVERY_REGIONS[key]};
 }
-function getDeliveryFee(){return getDeliveryRegion().fee;}let currentLang=localStorage.getItem("modoLang") || "ar";let selectedProductId="smart";const products=[
+function getDeliveryFee(){return getDeliveryRegion().fee;}
+function getEffectiveDeliveryFee(){
+  return selectedProductId==="premium" ? 0 : getDeliveryRegion().fee;
+}
+function getEffectiveDeliveryText(){
+  return selectedProductId==="premium" ? (currentLang==="ar" ? "مجاني" : "Free") : `${getDeliveryRegion().fee} EGP`;
+}let currentLang=localStorage.getItem("modoLang") || "ar";let selectedProductId="smart";const products=[
   {
     id:"smart",
     oldPrice:799,
@@ -232,15 +238,31 @@ Object.assign(translations.en, {
   checkoutTotalLabel: "Total including delivery"
 });
 
+
+/* ===== Premium free delivery ===== */
+Object.assign(translations.ar, {
+  premiumFreeDelivery: "توصيل مجاني",
+  premiumFreeDeliveryCheckout: "توصيل مجاني مع Modo Premium Wallet"
+});
+Object.assign(translations.en, {
+  premiumFreeDelivery: "Free delivery",
+  premiumFreeDeliveryCheckout: "Free delivery with Modo Premium Wallet"
+});
+
 function t(k){return translations[currentLang][k]||k}
 
 function updateCheckoutTotal(){
   const totalValue=document.getElementById("checkoutTotalValue");
-  if(!totalValue)return;
+  const premiumNote=document.getElementById("premiumFreeDeliveryNote");
   const p=products.find(i=>i.id===selectedProductId);
   const delivery=getDeliveryRegion();
-  if(!p||!delivery)return;
-  totalValue.textContent=money(p.price+delivery.fee);
+  if(p&&delivery&&totalValue){
+    const effectiveDelivery=getEffectiveDeliveryFee();
+    totalValue.textContent=money(p.price+effectiveDelivery);
+  }
+  if(premiumNote){
+    premiumNote.hidden = selectedProductId !== "premium";
+  }
 }
 
 function updateDeliveryFeeNote(){
@@ -313,7 +335,7 @@ function money(v){return `${v.toLocaleString()} EGP`}function applyTranslations(
     ` : "";
 
     card.innerHTML=`
-      <span class="product-tag">${d.tag}</span>
+      <span class="product-tag">${d.tag}</span>${p.id==="premium"?`<span class="free-delivery-badge">${t("premiumFreeDelivery")}</span>`:""}
       <img src="${p.image}" alt="${d.name}">
       <h3>${d.name}</h3>
       <p>${d.desc}</p>
@@ -399,7 +421,8 @@ function setupReveal(){const els=document.querySelectorAll(".reveal");const reve
     const payment=document.getElementById("paymentMethod").value;
     const deliveryRegion=getDeliveryRegion();
     const notes=document.getElementById("customerNotes").value.trim()||"-";
-    const total=p.price+deliveryRegion.fee;
+    const effectiveDeliveryFee=getEffectiveDeliveryFee();
+    const total=p.price+effectiveDeliveryFee;
     const productName=p[currentLang].name;
 
     if (typeof fbq === "function") {
@@ -442,8 +465,9 @@ function setupReveal(){const els=document.querySelectorAll(".reveal");const reve
       notes: notes,
       price: p.price,
       delivery_region: deliveryRegion[currentLang],
-      delivery_fee: deliveryRegion.fee,
-      delivery: deliveryRegion.fee,
+      delivery_fee: effectiveDeliveryFee,
+      delivery_fee_display: getEffectiveDeliveryText(),
+      delivery: effectiveDeliveryFee,
       total: total,
       language: currentLang === "ar" ? "Arabic" : "English",
       whatsapp_phone: normalizeEgyptPhoneForWhatsApp(phone),
@@ -463,7 +487,7 @@ function setupReveal(){const els=document.querySelectorAll(".reveal");const reve
             : "WhatsApp opened, but the automatic email did not send. Please check settings.");
     }
 
-    const msg=`🛍️ New Modo Order%0A%0AProduct: ${productName}%0APrice: ${p.price} EGP%0ADelivery Area: ${deliveryRegion[currentLang]}%0ADelivery Fee: ${deliveryRegion.fee} EGP%0ATotal: ${total} EGP%0A%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}%0APayment: ${payment}%0ANotes: ${notes}`;
+    const msg=`🛍️ New Modo Order%0A%0AProduct: ${productName}%0APrice: ${p.price} EGP%0ADelivery Area: ${deliveryRegion[currentLang]}%0ADelivery Fee: ${getEffectiveDeliveryText()}%0ATotal: ${total} EGP%0A%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}%0APayment: ${payment}%0ANotes: ${notes}`;
 
     setTimeout(()=>{
       window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`,"_blank");
@@ -893,4 +917,5 @@ function setupStickyCtaVisibility() {
 setupStickyCtaVisibility();
 
 updateDeliveryFeeNote();
+
 
