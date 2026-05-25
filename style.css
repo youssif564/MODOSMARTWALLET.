@@ -1732,3 +1732,44 @@ html[dir="ltr"] .brand-logo img {
 #deliveryRegion {
   cursor: pointer;
 }
+
+/* ===== Checkout total + confirmation text update ===== */
+.checkout-total-box {
+  margin: 6px 0 18px;
+  background: #1A1A1A;
+  border: 1px solid rgba(255,214,119,0.28);
+  border-radius: 22px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.checkout-total-box span {
+  color: rgba(255,255,255,0.78);
+  font-weight: 800;
+  font-size: clamp(.95rem, 2.2vw, 1.05rem);
+}
+
+.checkout-total-box strong {
+  color: #FFD677;
+  font-weight: 950;
+  font-size: clamp(1.15rem, 3vw, 1.55rem);
+  white-space: nowrap;
+}
+
+.order-success-message {
+  background: linear-gradient(135deg, #d7ffdf, #8dffad) !important;
+  color: #071007 !important;
+  border: 1px solid rgba(37,211,102,0.45) !important;
+}
+
+@media (max-width: 620px) {
+  .checkout-total-box {
+    flex-direction: column;
+    text-align: center;
+    padding: 14px;
+    border-radius: 18px;
+  }
+}
