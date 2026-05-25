@@ -202,20 +202,20 @@ Object.assign(translations.en, {
 /* ===== Delivery regions translation keys ===== */
 Object.assign(translations.ar, {
   formDeliveryRegion: "منطقة التوصيل",
-  deliveryCairoGiza: "القاهرة والجيزة — 99 جنيه توصيل",
-  deliveryAlex: "الإسكندرية — 120 جنيه توصيل",
-  deliveryDeltaCanal: "الدلتا والقناة — 125 جنيه توصيل",
-  deliveryAssiut: "أسيوط — 200 جنيه توصيل",
-  deliveryNorthCoast: "الساحل الشمالي — 220 جنيه توصيل",
+  deliveryCairoGiza: "القاهرة والجيزة — 99 جنيه",
+  deliveryAlex: "الإسكندرية — 120 جنيه",
+  deliveryDeltaCanal: "الدلتا والقناة — 125 جنيه",
+  deliveryAssiut: "أسيوط — 200 جنيه",
+  deliveryNorthCoast: "الساحل الشمالي — 220 جنيه",
   deliveryFeeLabel: "رسوم التوصيل"
 });
 Object.assign(translations.en, {
   formDeliveryRegion: "Delivery area",
-  deliveryCairoGiza: "Cairo & Giza — 99 EGP delivery",
-  deliveryAlex: "Alexandria — 120 EGP delivery",
-  deliveryDeltaCanal: "Delta & Canal — 125 EGP delivery",
-  deliveryAssiut: "Assiut — 200 EGP delivery",
-  deliveryNorthCoast: "North Coast — 220 EGP delivery",
+  deliveryCairoGiza: "Cairo & Giza — 99 EGP",
+  deliveryAlex: "Alexandria — 120 EGP",
+  deliveryDeltaCanal: "Delta & Canal — 125 EGP",
+  deliveryAssiut: "Assiut — 200 EGP",
+  deliveryNorthCoast: "North Coast — 220 EGP",
   deliveryFeeLabel: "Delivery fee"
 });
 
