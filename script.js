@@ -39,11 +39,11 @@ async function sendOrderEmailViaEmailJS(orderData) {
   }
 }
 const DELIVERY_REGIONS={
-  cairo_giza:{ar:"القاهرة والجيزة",en:"Cairo & Giza",fee:100},
-  alex:{ar:"الإسكندرية",en:"Alexandria",fee:110},
-  delta_canal:{ar:"الدلتا والقناة",en:"Delta & Canal",fee:115},
-  assiut:{ar:"أسيوط",en:"Assiut",fee:180},
-  northcoast:{ar:"الساحل الشمالي",en:"North Coast",fee:200}
+  cairo_giza:{ar:"القاهرة والجيزة",en:"Cairo & Giza",fee:99},
+  alex:{ar:"الإسكندرية",en:"Alexandria",fee:120},
+  delta_canal:{ar:"الدلتا والقناة",en:"Delta & Canal",fee:125},
+  assiut:{ar:"أسيوط",en:"Assiut",fee:200},
+  northcoast:{ar:"الساحل الشمالي",en:"North Coast",fee:220}
 };
 let selectedDeliveryRegion="cairo_giza";
 function getDeliveryRegion(){
@@ -202,20 +202,20 @@ Object.assign(translations.en, {
 /* ===== Delivery regions translation keys ===== */
 Object.assign(translations.ar, {
   formDeliveryRegion: "منطقة التوصيل",
-  deliveryCairoGiza: "القاهرة والجيزة — 100 جنيه توصيل",
-  deliveryAlex: "الإسكندرية — 110 جنيه توصيل",
-  deliveryDeltaCanal: "الدلتا والقناة — 115 جنيه توصيل",
-  deliveryAssiut: "أسيوط — 180 جنيه توصيل",
-  deliveryNorthCoast: "الساحل الشمالي — 200 جنيه توصيل",
+  deliveryCairoGiza: "القاهرة والجيزة — 99 جنيه توصيل",
+  deliveryAlex: "الإسكندرية — 120 جنيه توصيل",
+  deliveryDeltaCanal: "الدلتا والقناة — 125 جنيه توصيل",
+  deliveryAssiut: "أسيوط — 200 جنيه توصيل",
+  deliveryNorthCoast: "الساحل الشمالي — 220 جنيه توصيل",
   deliveryFeeLabel: "رسوم التوصيل"
 });
 Object.assign(translations.en, {
   formDeliveryRegion: "Delivery area",
-  deliveryCairoGiza: "Cairo & Giza — 100 EGP delivery",
-  deliveryAlex: "Alexandria — 110 EGP delivery",
-  deliveryDeltaCanal: "Delta & Canal — 115 EGP delivery",
-  deliveryAssiut: "Assiut — 180 EGP delivery",
-  deliveryNorthCoast: "North Coast — 200 EGP delivery",
+  deliveryCairoGiza: "Cairo & Giza — 99 EGP delivery",
+  deliveryAlex: "Alexandria — 120 EGP delivery",
+  deliveryDeltaCanal: "Delta & Canal — 125 EGP delivery",
+  deliveryAssiut: "Assiut — 200 EGP delivery",
+  deliveryNorthCoast: "North Coast — 220 EGP delivery",
   deliveryFeeLabel: "Delivery fee"
 });
 
@@ -869,4 +869,5 @@ function setupStickyCtaVisibility() {
 setupStickyCtaVisibility();
 
 updateDeliveryFeeNote();
+
 
