@@ -477,25 +477,31 @@ function setupReveal(){const els=document.querySelectorAll(".reveal");const reve
       reply_to: "youssifKarim12@gmail.com"
     };
 
-    // Send automated order email to you through EmailJS.
-    const emailSent = await sendOrderEmailViaEmailJS(orderData);
-    if(success){
-      success.textContent = emailSent
-        ? t("orderSuccess")
-        : (currentLang === "ar"
-            ? "تم فتح واتساب، لكن الإيميل التلقائي لم يصل. سنراجع الإعدادات."
-            : "WhatsApp opened, but the automatic email did not send. Please check settings.");
+    const msg=`🛍️ New Modo Order%0A%0AProduct: ${productName}%0APrice: ${p.price} EGP%0ADelivery Area: ${deliveryRegion[currentLang]}%0ADelivery Fee: ${getEffectiveDeliveryText()}%0ATotal: ${total} EGP%0A%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}%0APayment: ${payment}%0ANotes: ${notes}`;
+    const whatsappUrl=`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+
+    // Important: open WhatsApp immediately from the click event.
+    // Waiting for EmailJS first can make mobile browsers block the WhatsApp popup.
+    const whatsappTab = window.open(whatsappUrl, "_blank");
+    if(!whatsappTab){
+      window.location.href = whatsappUrl;
     }
 
-    const msg=`🛍️ New Modo Order%0A%0AProduct: ${productName}%0APrice: ${p.price} EGP%0ADelivery Area: ${deliveryRegion[currentLang]}%0ADelivery Fee: ${getEffectiveDeliveryText()}%0ATotal: ${total} EGP%0A%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}%0APayment: ${payment}%0ANotes: ${notes}`;
-
-    setTimeout(()=>{
-      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`,"_blank");
-      if(submitBtn){
-        submitBtn.disabled=false;
-        submitBtn.textContent=t("submitOrder");
+    // Send automated order email in the background without blocking WhatsApp.
+    sendOrderEmailViaEmailJS(orderData).then(emailSent=>{
+      if(!emailSent){
+        console.warn("Order email did not send, but WhatsApp was opened.");
       }
-    },450);
+    });
+
+    if(success){
+      success.textContent=t("orderSuccess");
+    }
+
+    if(submitBtn){
+      submitBtn.disabled=false;
+      submitBtn.textContent=t("submitOrder");
+    }
   });
 }
 const langToggleButton = document.getElementById("langToggle");
@@ -917,5 +923,3 @@ function setupStickyCtaVisibility() {
 setupStickyCtaVisibility();
 
 updateDeliveryFeeNote();
-
-
