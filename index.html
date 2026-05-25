@@ -325,6 +325,12 @@ src="https://www.facebook.com/tr?id=1723439528639555&ev=PageView&noscript=1"
             <option value="assiut" data-i18n="deliveryAssiut">أسيوط — 200 جنيه</option>
             <option value="northcoast" data-i18n="deliveryNorthCoast">الساحل الشمالي — 220 جنيه</option>
           </select>
+
+          <div class="checkout-total-box" id="checkoutTotalBox">
+            <span data-i18n="checkoutTotalLabel">إجمالي السعر شامل التوصيل</span>
+            <strong id="checkoutTotalValue">749 EGP</strong>
+          </div>
+
 <label for="paymentMethod" data-i18n="formPayment">طريقة الدفع</label>
           <select id="paymentMethod" required>
             <option value="Cash on Delivery" data-i18n="paymentCOD">الدفع عند الاستلام</option>
@@ -335,8 +341,8 @@ src="https://www.facebook.com/tr?id=1723439528639555&ev=PageView&noscript=1"
           <label for="customerNotes" data-i18n="formNotes">ملاحظات اختيارية</label>
           <textarea id="customerNotes" placeholder="أي ملاحظات للتوصيل؟"></textarea>
 
-          <button type="submit" class="btn btn-primary order-submit" data-i18n="submitOrder">إرسال الطلب على واتساب</button>
-          <p class="order-success-message" id="orderSuccess" hidden data-i18n="orderSuccess">شكراً! سنتواصل معك خلال ساعات</p>
+          <button type="submit" class="btn btn-primary order-submit" data-i18n="submitOrder">إرسال الطلب</button>
+          <p class="order-success-message" id="orderSuccess" hidden data-i18n="orderSuccess">تم تأكيد طلبك</p>
           <p class="form-note">🔒 <span data-i18n="formNote">بياناتك تستخدم لتأكيد الطلب فقط.</span></p>
         </form>
       </div>
