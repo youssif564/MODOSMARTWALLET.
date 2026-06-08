@@ -1434,3 +1434,4 @@ setupReviews();
 initLiveReviews();
 setupStickyCtaVisibility();
 setupOrderForm();
+
