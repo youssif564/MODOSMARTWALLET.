@@ -669,6 +669,7 @@ function renderProducts() {
 
 function updateCartCount() {
   const count = getCartCount();
+  document.body.classList.toggle("cart-helper-visible", count > 0);
   document.querySelectorAll(".cart-link").forEach(link => {
     link.classList.toggle("has-items", count > 0);
     link.setAttribute("aria-label", t("viewCart"));
