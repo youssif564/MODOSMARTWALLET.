@@ -4283,3 +4283,64 @@ body.sticky-cta-visible .whatsapp-float {
     inset-inline-end: auto !important;
   }
 }
+
+/* ===== Absolute final guard: cart and WhatsApp can never share one side ===== */
+html body a.whatsapp-float,
+html[dir="rtl"] body a.whatsapp-float,
+html[dir="ltr"] body a.whatsapp-float,
+html body.sticky-cta-visible a.whatsapp-float {
+  position: fixed !important;
+  left: 18px !important;
+  right: auto !important;
+  bottom: 18px !important;
+  inset-inline-start: auto !important;
+  inset-inline-end: auto !important;
+  z-index: 1001 !important;
+}
+
+html body a.cart-link.cart-float,
+html[dir="rtl"] body a.cart-link.cart-float,
+html[dir="ltr"] body a.cart-link.cart-float,
+html body.sticky-cta-visible a.cart-link.cart-float {
+  position: fixed !important;
+  left: auto !important;
+  right: 18px !important;
+  bottom: 18px !important;
+  inset-inline-start: auto !important;
+  inset-inline-end: auto !important;
+  width: min(430px, calc(100vw - 118px)) !important;
+  z-index: 1000 !important;
+}
+
+@media (max-width: 620px) {
+  html body a.whatsapp-float,
+  html[dir="rtl"] body a.whatsapp-float,
+  html[dir="ltr"] body a.whatsapp-float,
+  html body.sticky-cta-visible a.whatsapp-float {
+    left: 14px !important;
+    right: auto !important;
+    bottom: 14px !important;
+    inset-inline-start: auto !important;
+    inset-inline-end: auto !important;
+  }
+
+  html body a.cart-link.cart-float,
+  html[dir="rtl"] body a.cart-link.cart-float,
+  html[dir="ltr"] body a.cart-link.cart-float,
+  html body.sticky-cta-visible a.cart-link.cart-float {
+    left: auto !important;
+    right: 14px !important;
+    bottom: 14px !important;
+    width: min(340px, calc(100vw - 112px)) !important;
+    inset-inline-start: auto !important;
+    inset-inline-end: auto !important;
+  }
+}
+
+@media (max-width: 390px) {
+  html body a.cart-link.cart-float,
+  html[dir="rtl"] body a.cart-link.cart-float,
+  html[dir="ltr"] body a.cart-link.cart-float {
+    width: calc(100vw - 108px) !important;
+  }
+}
