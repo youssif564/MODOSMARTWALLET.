@@ -4344,3 +4344,20 @@ html body.sticky-cta-visible a.cart-link.cart-float {
     width: calc(100vw - 108px) !important;
   }
 }
+
+/* When the cart helper is visible, lift WhatsApp above it to prevent overlap. */
+html body.cart-helper-visible a.whatsapp-float,
+html[dir="rtl"] body.cart-helper-visible a.whatsapp-float,
+html[dir="ltr"] body.cart-helper-visible a.whatsapp-float,
+html body.cart-helper-visible.sticky-cta-visible a.whatsapp-float {
+  bottom: 122px !important;
+}
+
+@media (max-width: 620px) {
+  html body.cart-helper-visible a.whatsapp-float,
+  html[dir="rtl"] body.cart-helper-visible a.whatsapp-float,
+  html[dir="ltr"] body.cart-helper-visible a.whatsapp-float,
+  html body.cart-helper-visible.sticky-cta-visible a.whatsapp-float {
+    bottom: 104px !important;
+  }
+}
